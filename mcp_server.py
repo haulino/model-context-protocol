@@ -1,4 +1,4 @@
-from mcp.server.fastmcp import FastMCP # Using this to delegate json schema creation
+from mcp.server.fastmcp import FastMCP  # Using this to delegate json schema creation
 from pydantic import Field
 
 mcp = FastMCP("DocumentMCP", log_level="ERROR")
@@ -13,31 +13,33 @@ docs = {
     "spec.txt": "These specifications define the technical requirements for the equipment.",
 }
 
+
 # tool to read a doc
 @mcp.tool(
     name="read_doc_contents",
-    description="Read the contents of a document and return it as a string"
+    description="Read the contents of a document and return it as a string",
 )
-def read_document(
-    doc_id: str = Field(description="Id of the document to read")
-):
+def read_document(doc_id: str = Field(description="Id of the document to read")):
     if doc_id not in docs:
         raise ValueError(f"Doc with id {doc_id} not found")
     return docs[doc_id]
 
+
 # tool to edit a doc
 @mcp.tool(
     name="edit_document",
-    description="Edit a document by replacing a string in the documents content"
+    description="Edit a document by replacing a string in the documents content",
 )
 def edit_document(
     doc_id: str = Field(description="Id of the document that will be edited"),
-    old_srt: str = Field(description="The text to replace. Must match exactly, including whitespace"),
-    new_str: str = Field(description="The new text to insert in place of the old text")
+    old_srt: str = Field(
+        description="The text to replace. Must match exactly, including whitespace"
+    ),
+    new_str: str = Field(description="The new text to insert in place of the old text"),
 ):
     if doc_id not in docs:
         raise ValueError(f"Doc with id {doc_id} not found")
-    
+
     docs[doc_id] = docs[doc_id].replace(old_srt, new_str)
 
 
