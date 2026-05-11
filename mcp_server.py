@@ -32,9 +32,7 @@ def read_document(doc_id: str = Field(description="Id of the document to read"))
 )
 def edit_document(
     doc_id: str = Field(description="Id of the document that will be edited"),
-    old_srt: str = Field(
-        description="The text to replace. Must match exactly, including whitespace"
-    ),
+    old_srt: str = Field(description="The text to replace. Must match exactly, including whitespace"),
     new_str: str = Field(description="The new text to insert in place of the old text"),
 ):
     if doc_id not in docs:
