@@ -81,9 +81,10 @@ class CliChat(Chat):
 
         Note the user's query might contain references to documents like "@report.docx". The "@" is only
         included as a way of mentioning the doc. The actual name of the document would be "report.docx".
-        If the document content is included in this prompt, you don't need to use an additional tool to read the document.
-        Answer the user's question directly and concisely. Start with the exact information they need. 
-        Don't refer to or mention the provided context in any way - just use it to inform your answer.
+        If the document content is included in this prompt, you don't need to use an additional tool to
+        read the document. Answer the user's question directly and concisely. Start with the exact
+        information they need. Don't refer to or mention the provided context in any way - just use it
+        to inform your answer.
         """
 
         self.messages.append({"role": "user", "content": prompt})
