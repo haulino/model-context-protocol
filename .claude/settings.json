@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "if": "Bash(git commit*)",
+            "if": "Bash(*git commit*)",
             "command": "staged=$(git diff --name-only --cached | grep '\\.py$'); [ -z \"$staged\" ] && exit 0; echo \"$staged\" | xargs uv run ruff format --check || { echo '{\"decision\": \"block\", \"reason\": \"ruff format check failed — run: uv run ruff format . then re-stage\"}'; exit 1; }",
             "statusMessage": "Checking Python formatting..."
           }
