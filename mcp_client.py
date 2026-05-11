@@ -61,7 +61,7 @@ class MCPClient:
         if isinstance(resource, types.ResourceContents):
             if resource.mimeType == "application/json":
                 return json.loads(resource.text)
-            
+
             return resource.text
 
     async def cleanup(self):
