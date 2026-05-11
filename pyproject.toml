@@ -10,3 +10,15 @@ dependencies = [
     "prompt-toolkit>=3.0.51",
     "python-dotenv>=1.1.0",
 ]
+
+[tool.ruff]
+exclude = [".venv"]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.12",
+]
